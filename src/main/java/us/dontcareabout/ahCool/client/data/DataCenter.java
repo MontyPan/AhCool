@@ -16,8 +16,20 @@ public class DataCenter {
 
 	public static ArrayList<BasicData> basicDataList;
 
+	public static BasicData findBasic(InputData input) {
+		for (BasicData bd : basicDataList) {
+			if (!input.getArea().equals(bd.getArea())) { continue; }
+			if (!input.getSection().equals(bd.getSection())) { continue; }
+			if (!input.getBlock().equals(bd.getBlock())) { continue; }
+			if (!input.getNumber().equals(bd.getNumber())) { continue; }
+
+			return bd;
+		}
+
+		return null;
+	}
+
 	public static void wantBasicData(String sheetId) {
-		basicDataList = new ArrayList<>();
 		SheetHappen.get(sheetId, new Callback<BasicData>() {
 			@Override
 			public void onSuccess(Sheet<BasicData> gs) {
@@ -37,7 +49,6 @@ public class DataCenter {
 	public static ArrayList<InputData> inputDataList;
 
 	public static void wantInputData(String sheetId) {
-		basicDataList = new ArrayList<>();
 		SheetHappen.get(sheetId, new Callback<InputData>() {
 			@Override
 			public void onSuccess(Sheet<InputData> gs) {
