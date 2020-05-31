@@ -11,7 +11,6 @@ import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
-import com.sencha.gxt.widget.core.client.grid.GridView;
 
 import us.dontcareabout.ahCool.client.data.InputData;
 import us.dontcareabout.gxt.client.component.Grid2;
@@ -31,20 +30,13 @@ public class InputDataGrid extends Grid2<InputData> {
 	@Override
 	protected ColumnModel<InputData> genColumnModel() {
 		List<ColumnConfig<InputData, ?>> result = new ArrayList<>();
-		result.add(new ColumnConfig<>(properties.area(), 7, "行政區"));
-		result.add(new ColumnConfig<>(properties.section(), 5, "段"));
-		result.add(new ColumnConfig<>(properties.block(), 5, "小段"));
-		result.add(new ColumnConfig<>(properties.number(), 10, "地號"));
-		result.add(new ColumnConfig<>(properties.numerator(), 5, "分子"));
-		result.add(new ColumnConfig<>(properties.denominator(), 5, "分母"));
+		result.add(new ColumnConfig<>(properties.area(), 60, "行政區"));
+		result.add(new ColumnConfig<>(properties.section(), 40, "段"));
+		result.add(new ColumnConfig<>(properties.block(), 40, "小段"));
+		result.add(new ColumnConfig<>(properties.number(), 90, "地號"));
+		result.add(new ColumnConfig<>(properties.numerator(), 60, "分子"));
+		result.add(new ColumnConfig<>(properties.denominator(), 60, "分母"));
 		return new ColumnModel<>(result);
-	}
-
-	@Override
-	protected GridView<InputData> genGridView() {
-		GridView<InputData> result = new GridView<>();
-		result.setForceFit(true);
-		return result;
 	}
 
 	interface Properties extends PropertyAccess<InputData> {
